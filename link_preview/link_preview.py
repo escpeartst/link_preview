@@ -80,7 +80,7 @@ def generate_dict(url):
     '''
     return_dict = {}
     try:
-        html = req.urlopen(url).read().decode('utf-8')
+        html = req.urlopen(url).read().decode('utf-8', errors="replace")
         meta_elems = re.findall('<[\s]*meta[^<>]+og:(?:title|image|description)(?!:)[^<>]+>', html)
         og_map = map(return_og, meta_elems)
         og_dict = dict(list(og_map))
